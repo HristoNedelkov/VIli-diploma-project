@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/style.css">
+  <title>MyBlog</title>
+
+
+  <!-- Modules -->
+  <script src="./node_modules/jquery/dist/jquery.js"></script>
+  <script src="./node_modules/handlebars/dist/handlebars.js"></script>
+
+
+  <!-- Scripts -->
+  <script src="survices.js"></script>
+  <script src="router.js" defer></script>
+  <script src="app.js" defer></script>
+
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script type="text/x-handlebars-template" id="home-template">
+{{> header-template}}
+  <br><br><br>
+  {{#if isAuth}}
+  {{> home-logged-template}}
+  {{else}}
+  <section id="home">
+    <section class="background-container">
+      <h1>Welcome to MyBlog!</h1>
+      <div class="auth-buttons">
+        <a href="/login" onclick="navigateHandler(event)">Login</a>
+        <a href="/register" onclick="navigateHandler(event)">Register</a>
+      </div>
+    </section>
+  </section>
+
+  {{/if}}
+  
+</script>
+  <script type="text/x-handlebars-template" id="header-template">
+
+  <header id="header">
+    <h1>MyBlog</h1>
+    {{#if isAuth}}
+    <h2>Welcome <span>{{email}}</span></h2>
+    {{/if}}
+    <nav id="nav">
+      <ul>
+        {{#if isAuth}}
+        <li><a href="/logout" onclick="navigateHandler(event)">Logout</a></li>
+        {{else}}
+        <li><a href="/home" onclick="navigateHandler"Home</a></li>
+        <li><a href="/login" onclick="navigateHandler(event)">Login</a></li>
+        <li><a href="/register" onclick="navigateHandler(event)">Register</a></li>
+        {{/if}}
+      </ul>
+    </nav>
+  </header>
+
+</script>
+
+
+  <script type="text/x-handlebars-template" id="home-logged-template">
+    {{#if isAuth}}
+    {{else}}
+    {{> header-template}}
+    {{/if}}
+    <section id="home-logged">
+      <section class="first-section">
+        <section class="background-container">
+          <form action="/create-post" method="POST" id="create-post-form">
+            <h1>Create Post</h1>
+            <label for="title">Title</label>
+            <input type="text" name="title">
+            <label for="category">Category</label>
+            <input type="text" name="category">
+            <label for="content">Content</label>
+            <textarea name="content" cols="30" rows="7"></textarea>
+            <button onclick="onAddPostSubmit(event)">Submit</button>
+          </form>
+        </section>
+      </section>
+      
+      <section class="second-section">
+        <h3>Articles</h3>
+        <hr>
+        <div class="posts-row">
+          {{#each posts}}
+          {{> post-template}}
+          {{/each}}
+        </div>
+      </section>
+    </section>
+  </script>
+
+  <script type="text/x-handlebars-template" id="login-template">
+    {{> header-template}}
+    <section id="login">
+      <div class="color">
+        <div class="login-form">
+          <h1>Login</h1>
+          <form action="/login" method="POST" id="login-form">
+            <label for="email">Email</label>
+            <input type="text" name="email">
+            <label for="password">Password</label>
+            <input type="password" name="password">
+            <button onclick="onLoginSubmit(event)">Submit</button>
+            <a href="/register" onclick="navigateHandler(event)" class="option">Don't have an account?</a>
+          </form>
+        </div>
+      </div>
+    </section>
+  </script>
+
+  <script type="text/x-handlebars-template" id="register-template">
+    {{> header-template}}
+    <section id="register">
+      <div class="color">
+        <div class="register-form">
+          <h1>Register</h1>
+          <form action="/register" method="POST" id="register-form">
+            <label for="email">Email</label>
+            <input type="text" name="email">
+            <label for="password">Password</label>
+            <input type="password" name="password">
+            <label for="repeat-password">Repeat Password</label>
+            <input type="password" name="repeatPassword">
+            <button  onclick="onRegSubmit(event)">Submit</button>
+            <a href="/login" onclick="navigateHandler(event)" class="option">Already have an account?</a>
+          </form>
+        </div>
+      </div>
+      </section>
+  </script>
+
+  <script type="text/x-handlebars-template" id="post-template">
+
+    <article class="post">
+      <h1>{{title}}</h1>
+      <h2><span>{{category}}</span></h2>
+      <p>{{content}}</p>
+      <a href="/delete/{{key}}" onclick="navigateHandler(event)" id="delete-button">Delete</a>
+      <a href="/details/{{key}}" onclick="navigateHandler(event)" id="details-button">Details</a>
+      <a href="/edit/{{key}}" onclick="navigateHandler(event)" id="edit-button">Edit</a>
+    </article>
+  </script>
+
+  <script type="text/x-handlebars-template" id="details-template">
+  {{> header-template}}
+    <section class="details">
+      <div class="detail">
+        <h1>Title: {{title}}</h1>
+        <h2>Category: {{category}}</h2>
+        <h3>Content: {{content}}</h3>
+        <a href="/home" onclick="navigateHandler(event)" > Back to Home</a>
+      </div>
+    </section>
+  </script>
+
+  <script type="text/x-handlebars-template" id="edit-template">
+    {{>home-logged-template}}
+    <main id="home-logged">
+      <section class="first-section">
+        <section class="background-container">
+          <form action="" method="" class="edit-form" id="edit-form">
+            <h1>Edit Post</h1>
+            <label for="title">Title</label>
+            <input type="text" name="title" value="">
+            <label for="category">Category</label>
+            <input type="text" name="category" value="">
+            <label for="content">Content</label>
+            <textarea name="content" cols="30" rows="7"></textarea>
+            <button onclick="editOneFunc(event)">Edit</button>
+            <a href="/home"  onclick="navigateHandler(event)" id="close-btn"><img src="../../images/close.png"></a>
+          </form>
+        </section>
+      </section>
+
+    
+    </main>
+  
+  </script>
+
+</body>
+
+
+</html>
