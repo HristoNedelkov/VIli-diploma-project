@@ -5,11 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/style.css" />
     <title>ExcelBlog</title>
-
     <!-- Modules -->
     <script src="./node_modules/jquery/dist/jquery.js"></script>
     <script src="./node_modules/handlebars/dist/handlebars.js"></script>
-
     <!-- Scripts -->
     <script src="survices.js"></script>
     <script src="router.js" defer></script>
@@ -19,6 +17,7 @@
   <body>
     <div id="root"></div>
 
+<!-- HOME TEMPLATE -->
     <script type="text/x-handlebars-template" id="home-template">
       {{> header-template}}
       <br><br><br>
@@ -36,18 +35,28 @@
             </section>
             {{/if}}
     </script>
-
+<!-- HEADER TEMPLATE -->
     <script type="text/x-handlebars-template" id="header-template">
       <header id="header">
-        <h1 href="/home" onclick="navigateHandler(event)">MyBlog</h1>
+        <h1>
+          <a
+            href="/home"
+            onclick="navigateHandler(event)"
+            style="text-decoration: none; color: #fff;"
+          >
+            MyBlog
+          </a>
+        </h1>
         {{#if isAuth}}
           <h2>Welcome <span>{{email}}</span></h2>
         {{/if}}
         <nav id="nav">
           <ul>
             {{#if isAuth}}
-              <li><a href="/about-us" onclick="navigateHandler(event)">About us</a></li>
-              <li><a href="/post" onclick="navigateHandler(event)">Post article</a></li>
+            <li><a href="/catalog" onclick="navigateHandler(event)">Catalog</a></li>
+            <li><a href="/gallery" onclick="navigateHandler(event)">Gallery</a></li>
+            <li><a href="/post" onclick="navigateHandler(event)">Post article</a></li>
+            <li><a href="/about-us" onclick="navigateHandler(event)">About us</a></li>
               <li><a
                   href="/logout"
                   onclick="navigateHandler(event)"
@@ -67,7 +76,7 @@
         </nav>
       </header>
     </script>
-
+<!-- post article template -->
     <script type="text/x-handlebars-template" id="post-article-template">
                 <!-- POST NEW ARTICLE PAGE -->
                 {{> header-template}}
@@ -85,7 +94,7 @@
         </form>
       </section>
     </script>
-
+<!-- HOME LOGGED template -->
     <script type="text/x-handlebars-template" id="home-logged-template">
       {{#if isAuth}}
       {{else}}
@@ -96,10 +105,12 @@
           <!-- HERE YOU CAN ADD THE VIDEO AND LOGO OF ZPG -->
 
           <p class="info-home">
+            <span>&#10003;</span>
             Excel, известен още като Microsoft Excel, е част от основния пакет инструменти за настолни компютри, който Microsoft предлага от първата си версия, която включва следните програми:
             Microsoft Word или Word: текстов процесор, Microsoft Excel или Excel: създаване на електронни таблици и графики, и Microsoft Powerpoint или Powerpoint: създаване и дизайн на слайдове за презентации.
           </p>
           <p class="info-home">
+            <span>&#10003;</span>
             Най-важната функция на Excel е създаването на електронни таблици, които имат функцията за сортиране и изчисляване, по автоматизиран начин чрез въвеждане на формули, големи количества числа или елементи. Поради горното Excel се превърна и в инструмент за изграждане на база данни.
             o	Електронна таблица
             o	База данни
@@ -107,20 +118,21 @@
 
           </p>
             <p class="info-home">
+              <span>&#10003;</span>
               Кой използва Microsoft Excel?
               Истината е, че на този въпрос не може да се посочи определена група от хора, които да използват този софтуер. Правилният отговор е, че на всички по една или друга причина се налага да използват полезните функции на програмата. Excel се използва предимно от:
-              	децата в училище, които са обучавани от ранна възраст да я използват;
-              ,	студенти;
-              ,	преподаватели;
-              ,	статистици;
-              ,	финансисти;
-              ,	счетоводители;
-              ,	офис служители;
-              ,	маркетинг специалисти;
-              ,	инженери;
-              ,	физици;
-              ,	мениджъри;
-               
+              	децата в училище, които са обучавани от ранна възраст да я използват
+              ,	студенти
+              ,	преподаватели
+              ,	статистици
+              ,	финансисти
+              ,	счетоводители
+              ,	офис служители
+              ,	маркетинг специалисти
+              ,	инженери
+              ,	физици
+              ,	мениджъри
+
             </p>
 
         </div>
@@ -136,7 +148,7 @@
         </section>
       </section>
     </script>
-
+<!-- LOGIN TEMPLATE -->
     <script type="text/x-handlebars-template" id="login-template">
       {{> header-template}}
       <section id="login">
@@ -155,7 +167,7 @@
         </div>
       </section>
     </script>
-
+<!-- REGISTER TEMPLATE -->
     <script type="text/x-handlebars-template" id="register-template">
       {{> header-template}}
       <section id="register">
@@ -176,7 +188,7 @@
         </div>
         </section>
     </script>
-
+<!-- POST TEMPLATE -->
     <script type="text/x-handlebars-template" id="post-template">
       <article class="post">
         <h1>{{title}}</h1>
@@ -195,7 +207,7 @@
 
       </article>
     </script>
-
+<!-- Details Template -->
     <script type="text/x-handlebars-template" id="details-template">
       {{> header-template}}
         <section class="details">
@@ -207,7 +219,7 @@
           </div>
         </section>
     </script>
-
+<!-- ABOUT-US -->
     <script type="text/x-handlebars-template" id="aboutUs-template">
       {{> header-template}}
         <section class="details">
