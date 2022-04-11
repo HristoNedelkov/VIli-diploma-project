@@ -6,7 +6,6 @@ function addEventListeners() {
   partialTemplate("post-article-template");
   partialTemplate("gallery-template");
 
-
   navigate("home");
 }
 function partialTemplate(id) {
@@ -77,7 +76,7 @@ function onAddPostSubmit(event) {
 const navigate = (path) => {
   //Here we change the address and shhow the html with  ROUTER()
   let pathWords = path.split("/");
-  history.pushState({}, "", path);
+  history.pushState({}, "", pathWords.pop());
   router(path);
 };
 
