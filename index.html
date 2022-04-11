@@ -21,25 +21,25 @@
 
     <script type="text/x-handlebars-template" id="home-template">
       {{> header-template}}
-        <br><br><br>
-        {{#if isAuth}}
-        {{> home-logged-template}}
-        {{else}}
-        <section id="home">
-          <section class="background-container">
-            <h1>Welcome to Excel Blog!</h1>
-            <div class="auth-buttons">
-              <a href="/login" onclick="navigateHandler(event)">Login</a>
-              <a href="/register" onclick="navigateHandler(event)">Register</a>
-            </div>
-          </section>
-        </section>
-
-        {{/if}}
+      <br><br><br>
+      {{#if isAuth}}
+      {{> home-logged-template}}
+      {{else}}
+      <section id="home">
+        <section class="background-container">
+          <h1>Welcome to Excel Blog!</h1>
+                <div class="auth-buttons">
+                  <a href="/login" onclick="navigateHandler(event)">Login</a>
+                  <a href="/register" onclick="navigateHandler(event)">Register</a>
+                </div>
+              </section>
+            </section>
+            {{/if}}
     </script>
+
     <script type="text/x-handlebars-template" id="header-template">
       <header id="header">
-        <h1>MyBlog</h1>
+        <h1 href="/home" onclick="navigateHandler(event)">MyBlog</h1>
         {{#if isAuth}}
           <h2>Welcome <span>{{email}}</span></h2>
         {{/if}}
@@ -47,6 +47,7 @@
           <ul>
             {{#if isAuth}}
               <li><a href="/about-us" onclick="navigateHandler(event)">About us</a></li>
+              <li><a href="/post" onclick="navigateHandler(event)">Post article</a></li>
               <li><a
                   href="/logout"
                   onclick="navigateHandler(event)"
@@ -67,28 +68,64 @@
       </header>
     </script>
 
+    <script type="text/x-handlebars-template" id="post-article-template">
+                <!-- POST NEW ARTICLE PAGE -->
+                {{> header-template}}
+                <section class="first-section">
+                  <section class="background-container">
+                    <form action="/create-post" method="POST" id="create-post-form">
+          <h1>Create Post</h1>
+          <label for="title">Title</label>
+          <input type="text" name="title">
+          <label for="category">Category</label>
+          <input type="text" name="category">
+          <label for="content">Content</label>
+          <textarea name="content" cols="30" rows="7"></textarea>
+          <button onclick="onAddPostSubmit(event)">Submit</button>
+        </form>
+      </section>
+    </script>
+
     <script type="text/x-handlebars-template" id="home-logged-template">
       {{#if isAuth}}
       {{else}}
       {{> header-template}}
       {{/if}}
       <section id="home-logged">
-        <section class="first-section">
-          <section class="background-container">
-            <form action="/create-post" method="POST" id="create-post-form">
-              <h1>Create Post</h1>
-              <label for="title">Title</label>
-              <input type="text" name="title">
-              <label for="category">Category</label>
-              <input type="text" name="category">
-              <label for="content">Content</label>
-              <textarea name="content" cols="30" rows="7"></textarea>
-              <button onclick="onAddPostSubmit(event)">Submit</button>
-            </form>
-          </section>
-        </section>
+         <div class="first-section">
+          <!-- HERE YOU CAN ADD THE VIDEO AND LOGO OF ZPG -->
 
-        <section class="second-section">
+          <p class="info-home">
+            Excel, известен още като Microsoft Excel, е част от основния пакет инструменти за настолни компютри, който Microsoft предлага от първата си версия, която включва следните програми:
+            Microsoft Word или Word: текстов процесор, Microsoft Excel или Excel: създаване на електронни таблици и графики, и Microsoft Powerpoint или Powerpoint: създаване и дизайн на слайдове за презентации.
+          </p>
+          <p class="info-home">
+            Най-важната функция на Excel е създаването на електронни таблици, които имат функцията за сортиране и изчисляване, по автоматизиран начин чрез въвеждане на формули, големи количества числа или елементи. Поради горното Excel се превърна и в инструмент за изграждане на база данни.
+            o	Електронна таблица
+            o	База данни
+            Новите версии на Excel включват все по-сложни функции за професионална и бизнес употреба, като диаграми и макроси.
+
+          </p>
+            <p class="info-home">
+              Кой използва Microsoft Excel?
+              Истината е, че на този въпрос не може да се посочи определена група от хора, които да използват този софтуер. Правилният отговор е, че на всички по една или друга причина се налага да използват полезните функции на програмата. Excel се използва предимно от:
+              	децата в училище, които са обучавани от ранна възраст да я използват;
+              ,	студенти;
+              ,	преподаватели;
+              ,	статистици;
+              ,	финансисти;
+              ,	счетоводители;
+              ,	офис служители;
+              ,	маркетинг специалисти;
+              ,	инженери;
+              ,	физици;
+              ,	мениджъри;
+               
+            </p>
+
+        </div>
+
+          <section class="second-section">
           <h3>Articles</h3>
           <hr>
           <div class="posts-row">
@@ -155,11 +192,7 @@
           onclick="navigateHandler(event)"
           id="details-button"
         >Details</a>
-        <a
-          href="/edit/{{key}}"
-          onclick="navigateHandler(event)"
-          id="edit-button"
-        >Edit</a>
+
       </article>
     </script>
 
@@ -183,34 +216,17 @@
             <h3>email: vili.andonova@gmail.com</h3>
             <h2>contact: +00123 234 345</h2>
             <a href="/home" onclick="navigateHandler(event)" > Back to Home</a>
+            <p>https://aula.bg/blog/excel-kak-se-izpolzva/</p>
+            <p>
+              https://support.microsoft.com/bg-bg/office/use-excel-built-in-functions-to-find-data-in-a-table-or-a-range-of-cells-6777ec9b-6191-426a-8d45-196ecbf2a186
+            </p>
+            <p>
+              https://www.bg-ikonomika.com/2014/05/1_3.html
+            </p>
           </div>
-          <div class="detail">
-            <img src="./logo.png"  id="about-us-logo" alt="My Happy SVG" style="width: 50%;"/>
-          </div>
+
         </section>
-    </script>
-
-    <script type="text/x-handlebars-template" id="edit-template">
-      {{>home-logged-template}}
-      <main id="home-logged">
-        <section class="first-section">
-          <section class="background-container">
-            <form action="" method="" class="edit-form" id="edit-form">
-              <h1>Edit Post</h1>
-              <label for="title">Title</label>
-              <input type="text" name="title" value="">
-              <label for="category">Category</label>
-              <input type="text" name="category" value="">
-              <label for="content">Content</label>
-              <textarea name="content" cols="30" rows="7"></textarea>
-              <button onclick="editOneFunc(event)">Edit</button>
-              <a href="/home"  onclick="navigateHandler(event)" id="close-btn"><img src="../../images/close.png"></a>
-            </form>
-          </section>
-        </section>
-
-
-      </main>
+        <img src="./logo.png"  id="about-us-logo" alt="My Happy SVG"  />
     </script>
   </body>
 </html>

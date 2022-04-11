@@ -241,6 +241,16 @@ img {
   margin-top: 6px;
   color: blue;
 }
+.info-home {
+  color: #fff;
+   text-align: center;
+   margin: 0 auto;
+   display: block;
+   width: 400px;
+   font-size: 18px;
+   margin-top: 400px;
+   
+}
 
 @keyframes appear {
   from {

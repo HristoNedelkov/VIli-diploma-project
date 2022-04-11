@@ -91,18 +91,6 @@ const itemSurvices = {
         let data = await res.json()
         return data
     },
-    async editOne(id, elements) {
-
-        let res = await fetch(`${dataBaseUrl}/posts/${id}.json`, {
-            method: 'PUT',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(elements)
-        })
-          return res
-
-    },
 }
 
 

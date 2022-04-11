@@ -5,6 +5,7 @@ const routes = {
   details: "details-template",
   edit: "edit-template",
   "about-us": "aboutUs-template",
+  post: "post-article-template",
 };
 
 const router = async (fullPath) => {
@@ -19,14 +20,16 @@ const router = async (fullPath) => {
     case "home":
       let postsData = await itemSurvices.getAll().then((res) => {
         if (Object.keys(res).length != 0) {
+          res.map((e) => {
+            e.content = e.content.substring(0, 100);
+            e.content += "...";
+          });
           templateData.posts = res;
         }
       });
       break;
     case "details":
       let postDetails = await itemSurvices.getOne(id);
-
-      console.log(postDetails);
       Object.assign(templateData, postDetails);
       break;
     case "delete":
@@ -39,6 +42,9 @@ const router = async (fullPath) => {
       break;
     case "about-us":
       console.log("We are currently in about-us page!");
+      break;
+    case "post":
+      console.log("in the post");
       break;
     default:
       break;
