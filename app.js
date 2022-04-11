@@ -5,6 +5,7 @@ function addEventListeners() {
   partialTemplate("home-logged-template");
   partialTemplate("post-article-template");
   partialTemplate("gallery-template");
+  partialTemplate("catalog-template")
 
   navigate("home");
 }

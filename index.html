@@ -38,26 +38,25 @@
     <!-- HEADER TEMPLATE -->
     <script type="text/x-handlebars-template" id="header-template">
       <header id="header">
-        <h1>
-          <a
-            href="/home"
-            onclick="navigateHandler(event)"
-            style="text-decoration: none; color: #fff;"
-          >
-            <img
-              src="/logo.png"
-              id="about-us-logo"
-              alt="My Happy SVG"
-              style="width: 119px; margin: 0;padding: 0%;"
-            />
-          </a>
-        </h1>
+        <img
+          src="/logo.png"
+          href="/"
+          onclick="navigateHandler(event)"
+          id="about-us-logo"
+          alt="My Happy SVG"
+          style="width: 119px; margin: 0;padding: 0%;"
+        />
+
         {{#if isAuth}}
           <h2>Welcome <span>{{email}}</span></h2>
         {{/if}}
         <nav id="nav">
           <ul>
             {{#if isAuth}}
+              <li><a
+                  href="/home"
+                  onclick="navigateHandler(event)"
+                >Home</a></li>
               <li><a
                   href="/catalog"
                   onclick="navigateHandler(event)"
@@ -255,10 +254,11 @@
           <img src="./images/graphs/gallery/2_firm/3.png" alt="">
           <img src="./images/graphs/gallery/2_firm/4.png" alt="">
           </div>
-      </script>
-
-     
-
+    </script>
+    <!-- Catalog template -->
+    <script type="text/x-handlebars-template" id="catalog-template">
+      {{>header-template}}
+    </script>
     <!-- ABOUT-US -->
     <script type="text/x-handlebars-template" id="aboutUs-template">
       {{> header-template}}
