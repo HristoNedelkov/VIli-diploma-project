@@ -6,6 +6,8 @@ const routes = {
   edit: "edit-template",
   "about-us": "aboutUs-template",
   post: "post-article-template",
+  gallery: "gallery-template",
+  catalog: "catalog-template",
 };
 
 const router = async (fullPath) => {
@@ -40,12 +42,7 @@ const router = async (fullPath) => {
       authServices.logout();
       return navigate("home");
       break;
-    case "about-us":
-      console.log("We are currently in about-us page!");
-      break;
-    case "post":
-      console.log("in the post");
-      break;
+    
     default:
       break;
   }

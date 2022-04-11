@@ -3,7 +3,9 @@ function addEventListeners() {
   partialTemplate("home-logged-template");
   partialTemplate("post-template");
   partialTemplate("home-logged-template");
-  partialTemplate("post-article-template")
+  partialTemplate("post-article-template");
+  partialTemplate("gallery-template");
+
 
   navigate("home");
 }

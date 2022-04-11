@@ -17,7 +17,7 @@
   <body>
     <div id="root"></div>
 
-<!-- HOME TEMPLATE -->
+    <!-- HOME TEMPLATE -->
     <script type="text/x-handlebars-template" id="home-template">
       {{> header-template}}
       <br><br><br>
@@ -35,7 +35,7 @@
             </section>
             {{/if}}
     </script>
-<!-- HEADER TEMPLATE -->
+    <!-- HEADER TEMPLATE -->
     <script type="text/x-handlebars-template" id="header-template">
       <header id="header">
         <h1>
@@ -44,7 +44,12 @@
             onclick="navigateHandler(event)"
             style="text-decoration: none; color: #fff;"
           >
-            MyBlog
+            <img
+              src="/logo.png"
+              id="about-us-logo"
+              alt="My Happy SVG"
+              style="width: 119px; margin: 0;padding: 0%;"
+            />
           </a>
         </h1>
         {{#if isAuth}}
@@ -53,10 +58,16 @@
         <nav id="nav">
           <ul>
             {{#if isAuth}}
-            <li><a href="/catalog" onclick="navigateHandler(event)">Catalog</a></li>
-            <li><a href="/gallery" onclick="navigateHandler(event)">Gallery</a></li>
-            <li><a href="/post" onclick="navigateHandler(event)">Post article</a></li>
-            <li><a href="/about-us" onclick="navigateHandler(event)">About us</a></li>
+              <li><a
+                  href="/catalog"
+                  onclick="navigateHandler(event)"
+                >Catalog</a></li>
+              <li><a
+                  href="/gallery"
+                  onclick="navigateHandler(event)"
+                >Gallery</a></li>
+              <li><a href="/post" onclick="navigateHandler(event)">Post article</a></li>
+              <li><a href="/about-us" onclick="navigateHandler(event)">About us</a></li>
               <li><a
                   href="/logout"
                   onclick="navigateHandler(event)"
@@ -76,7 +87,7 @@
         </nav>
       </header>
     </script>
-<!-- post article template -->
+    <!-- post article template -->
     <script type="text/x-handlebars-template" id="post-article-template">
                 <!-- POST NEW ARTICLE PAGE -->
                 {{> header-template}}
@@ -94,7 +105,7 @@
         </form>
       </section>
     </script>
-<!-- HOME LOGGED template -->
+    <!-- HOME LOGGED template -->
     <script type="text/x-handlebars-template" id="home-logged-template">
       {{#if isAuth}}
       {{else}}
@@ -148,7 +159,7 @@
         </section>
       </section>
     </script>
-<!-- LOGIN TEMPLATE -->
+    <!-- LOGIN TEMPLATE -->
     <script type="text/x-handlebars-template" id="login-template">
       {{> header-template}}
       <section id="login">
@@ -167,7 +178,7 @@
         </div>
       </section>
     </script>
-<!-- REGISTER TEMPLATE -->
+    <!-- REGISTER TEMPLATE -->
     <script type="text/x-handlebars-template" id="register-template">
       {{> header-template}}
       <section id="register">
@@ -188,7 +199,7 @@
         </div>
         </section>
     </script>
-<!-- POST TEMPLATE -->
+    <!-- POST TEMPLATE -->
     <script type="text/x-handlebars-template" id="post-template">
       <article class="post">
         <h1>{{title}}</h1>
@@ -207,7 +218,7 @@
 
       </article>
     </script>
-<!-- Details Template -->
+    <!-- Details Template -->
     <script type="text/x-handlebars-template" id="details-template">
       {{> header-template}}
         <section class="details">
@@ -219,7 +230,36 @@
           </div>
         </section>
     </script>
-<!-- ABOUT-US -->
+    <!-- GALLERY TEMPLATE -->
+    <script type="text/x-handlebars-template" id="gallery-template">
+      {{>header-template}}
+      <br><br>
+      <div class="gallery-firm">
+           <h1>ТРАНСПОРТНА ФИРМА</h1>
+          <img src="./images/graphs/gallery/firm_3/1.png" alt="">
+          <img src="./images/graphs/gallery/firm_3/2.png" alt="">
+          <img src="./images/graphs/gallery/firm_3/3.png" alt="">
+          <img src="./images/graphs/gallery/firm_3/4.png" alt="">
+          </div>
+      <div class="gallery-firm">
+           <h1>ФИРМА ЗА ДОГРАМА</h1>
+          <img src="./images/graphs/gallery/1_firm/1.png" alt="">
+          <img src="./images/graphs/gallery/1_firm/2.png" alt="">
+          <img src="./images/graphs/gallery/1_firm/3.png" alt="">
+          <img src="./images/graphs/gallery/1_firm/4.png" alt="">
+          </div>
+      <div class="gallery-firm">
+           <h1>ФИРМА ЗА СУПЕРМАРКЕТ</h1>
+          <img src="./images/graphs/gallery/2_firm/1.png" alt="">
+          <img src="./images/graphs/gallery/2_firm/2.png" alt="">
+          <img src="./images/graphs/gallery/2_firm/3.png" alt="">
+          <img src="./images/graphs/gallery/2_firm/4.png" alt="">
+          </div>
+      </script>
+
+     
+
+    <!-- ABOUT-US -->
     <script type="text/x-handlebars-template" id="aboutUs-template">
       {{> header-template}}
         <section class="details">
@@ -239,7 +279,6 @@
           </div>
 
         </section>
-        <img src="./logo.png"  id="about-us-logo" alt="My Happy SVG"  />
     </script>
   </body>
 </html>

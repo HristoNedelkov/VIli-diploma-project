@@ -1,0 +1,8 @@
+.gallery-firm {
+    background-color: rgb(238, 234, 234);
+    margin-top: 50px;
+}
+.gallery-firm img {
+    margin: 5px;
+    border-radius: 10px;
+}
