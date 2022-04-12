@@ -1,15 +1,15 @@
-@import 'reset.css';
-@import 'header.css';
-@import 'home.css';
-@import 'login.css';
-@import 'register.css';
-@import 'details.css';
-@import 'gallery.css';
+@import "reset.css";
+@import "header.css";
+@import "home.css";
+@import "login.css";
+@import "register.css";
+@import "details.css";
+@import "gallery.css";
+@import "catalog.css";
 
 html {
   font-family: sans-serif;
 }
-
 
 .msg {
   display: flex;
@@ -47,7 +47,6 @@ html {
   25% {
     opacity: 0;
   }
-
 
   100% {
     transform: translate(0, -150%);

@@ -53,10 +53,7 @@
         <nav id="nav">
           <ul>
             {{#if isAuth}}
-              <li><a
-                  href="/home"
-                  onclick="navigateHandler(event)"
-                >Home</a></li>
+              <li><a href="/home" onclick="navigateHandler(event)">Home</a></li>
               <li><a
                   href="/catalog"
                   onclick="navigateHandler(event)"
@@ -257,7 +254,69 @@
     </script>
     <!-- Catalog template -->
     <script type="text/x-handlebars-template" id="catalog-template">
-      {{>header-template}}
+         {{>header-template}}
+         <br><br>
+         <div class="gallery-firm">
+           <h1>ТРАНСПОРТНА ФИРМА</h1>
+          <div class="catalog-card">
+            <h3>Първа стъпка</h3>
+            <img src="./images/steps/1_firm/1.png" alt="">
+          </div>
+          <div class="catalog-card">
+            <h3>Втора стъпка</h3>
+            <img src="./images/steps/1_firm/2.png" alt="">
+          </div>
+          <div class="catalog-card">
+            <h3>Трета стъпка</h3>
+            <img src="./images/steps/1_firm/3.png" alt="">
+          </div>
+        </div>
+
+      <div class="gallery-firm">
+           <h1>ФИРМА ЗА ДОГРАМА</h1>
+           <div class="catalog-card">
+            <h3>Първа стъпка</h3>
+            <img src="./images/steps/2_firm/1.png" alt="">
+          </div>
+          <div class="catalog-card">
+            <h3>Втора стъпка</h3>
+            <img src="./images/steps/2_firm/2.png" alt="">
+          </div>
+          <div class="catalog-card">
+            <h3>Трета стъпка</h3>
+            <img src="./images/steps/2_firm/3.png" alt="">
+          </div>
+          <div class="catalog-card">
+            <h3>Четвърта стъпка</h3>
+            <img src="./images/steps/2_firm/4.png" alt="">
+
+          </div>
+          <div class="catalog-card">
+            <h3>Петта стъпка</h3>
+            <img src="./images/steps/2_firm/5.png" alt="">
+          </div>
+          </div>
+      <div class="gallery-firm">
+           <h1>ФИРМА ЗА СУПЕРМАРКЕТ</h1>
+           <div class="catalog-card">
+            <h3>Първа стъпка</h3>
+            <img src="./images/steps/3_firm/1.png" alt="">
+          </div>
+          <div class="catalog-card">
+            <h3>Втора стъпка</h3>
+            <img src="./images/steps/3_firm/2.png" alt="">
+          </div>
+          <div class="catalog-card">
+            <h3>Трета стъпка</h3>
+            <img src="./images/steps/3_firm/3.png" alt="">
+          </div>
+          <div class="catalog-card">
+            <h3>Четвърта стъпка</h3>
+            <img src="./images/steps/3_firm/4.png" alt="">
+          </div>
+          
+          
+          </div>
     </script>
     <!-- ABOUT-US -->
     <script type="text/x-handlebars-template" id="aboutUs-template">
