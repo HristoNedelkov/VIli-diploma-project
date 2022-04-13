@@ -3,12 +3,11 @@ const routes = {
   login: "login-template",
   register: "register-template",
   details: "details-template",
-  edit: "edit-template",
   "about-us": "aboutUs-template",
-  post: "post-article-template",
+  contact : "contact-template",
   gallery: "gallery-template",
   catalog: "catalog-template",
-  info: "info-template"
+  info: "info-template",
 };
 
 const router = async (fullPath) => {
@@ -43,7 +42,7 @@ const router = async (fullPath) => {
       authServices.logout();
       return navigate("home");
       break;
-    
+
     default:
       break;
   }

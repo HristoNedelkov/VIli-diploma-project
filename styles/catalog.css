@@ -1,6 +1,34 @@
 .catalog-card {
-    padding: 0%;
-    margin: 20px auto;
-    border: 1px solid black;
-    width: 50%;
+  padding: 0%;
+  margin: 20px auto;
+  border: 1px solid black;
+  width: 50%;
+}
+.comment-card {
+  width: 400px;
+  margin: 10px;
+  margin-top: 1%;
+  border: 2px solid white;
+  font-family: "Courier New", Courier, monospace;
+  padding: 20px;
+  color: aliceblue;
+  display: inline-block;
+  background: linear-gradient(360deg, #B1D846 0%, #4C4747 100%);
+}
+.comment-card h3 {
+text-align: center;
+}
+.comment-card p {
+    font-style: italic;
+    margin: 6px;
+}
+.comment-card h1 {
+    text-align: center;
+  stroke: olivedrab;
+  font-size: 19px;
+}
+.comments-box {
+    margin-left: 20px;
+  width: 100%;
+  display: inline-block;
 }

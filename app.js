@@ -3,7 +3,7 @@ function addEventListeners() {
   partialTemplate("home-logged-template");
   partialTemplate("post-template");
   partialTemplate("home-logged-template");
-  partialTemplate("post-article-template");
+  partialTemplate("contact-template");
   partialTemplate("gallery-template");
   partialTemplate("catalog-template");
   partialTemplate("info-template");
@@ -68,6 +68,24 @@ function onAddPostSubmit(event) {
   if (isValid) {
     itemSurvices.add({ title, category, content }).then((res) => {
       navigate("home");
+    });
+  } else {
+    navigate("home");
+    console.log("FIll all of the inputs");
+  }
+}
+function onCommentSubmit(event) {
+  event.preventDefault();
+  let formData = new FormData(document.forms["comment-form"]);
+  let name = formData.get("name");
+  let email = formData.get("email");
+  let content = formData.get("message");
+
+  let isValid = title != "" && category != "" && content != "";
+
+  if (isValid) {
+    commentServices.add({ name, email, content }).then((res) => {
+      navigate("post");
     });
   } else {
     navigate("home");

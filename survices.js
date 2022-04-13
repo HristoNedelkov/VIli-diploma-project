@@ -91,3 +91,17 @@ const itemSurvices = {
     return data;
   },
 };
+
+const commentServices = {
+  async add(commentData) {
+    let res = await fetch(`${dataBaseUrl}/comments.json`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(postData),
+    });
+    let data = await res.json();
+    return data;
+  },
+};
