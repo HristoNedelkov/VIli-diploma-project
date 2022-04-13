@@ -35,6 +35,20 @@
             </section>
             {{/if}}
     </script>
+    <script type="text/x-handlebars-template" id="info-template">
+      {{> header-template}}
+<br><br><br>
+      <section class="second-section">
+        <h3>Articles</h3>
+        <hr>
+        <div class="posts-row">
+          {{#each posts}}
+          {{> post-template}}
+          {{/each}}
+        </div>
+
+    </section>
+    </script>
     <!-- HEADER TEMPLATE -->
     <script type="text/x-handlebars-template" id="header-template">
       <header id="header">
@@ -58,6 +72,7 @@
                   href="/catalog"
                   onclick="navigateHandler(event)"
                 >Catalog</a></li>
+              <li><a href="/info" onclick="navigateHandler(event)">Info</a></li>
               <li><a
                   href="/gallery"
                   onclick="navigateHandler(event)"
@@ -144,16 +159,7 @@
 
         </div>
 
-          <section class="second-section">
-          <h3>Articles</h3>
-          <hr>
-          <div class="posts-row">
-            {{#each posts}}
-            {{> post-template}}
-            {{/each}}
-          </div>
-        </section>
-      </section>
+          
     </script>
     <!-- LOGIN TEMPLATE -->
     <script type="text/x-handlebars-template" id="login-template">
@@ -314,8 +320,8 @@
             <h3>Четвърта стъпка</h3>
             <img src="./images/steps/3_firm/4.png" alt="">
           </div>
-          
-          
+
+
           </div>
     </script>
     <!-- ABOUT-US -->

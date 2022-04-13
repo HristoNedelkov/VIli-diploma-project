@@ -8,6 +8,7 @@ const routes = {
   post: "post-article-template",
   gallery: "gallery-template",
   catalog: "catalog-template",
+  info: "info-template"
 };
 
 const router = async (fullPath) => {
@@ -19,7 +20,7 @@ const router = async (fullPath) => {
   switch (
     path //
   ) {
-    case "home":
+    case "info":
       let postsData = await itemSurvices.getAll().then((res) => {
         if (Object.keys(res).length != 0) {
           res.map((e) => {
