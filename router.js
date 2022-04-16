@@ -4,7 +4,7 @@ const routes = {
   register: "register-template",
   details: "details-template",
   "about-us": "aboutUs-template",
-  contact : "contact-template",
+  contact: "contact-template",
   gallery: "gallery-template",
   catalog: "catalog-template",
   info: "info-template",
@@ -16,18 +16,21 @@ const router = async (fullPath) => {
   let app = document.getElementById("root");
   let templateData = authServices.getData();
 
-  switch (
-    path //
-  ) {
+  switch (path) {
     case "info":
-      let postsData = await itemSurvices.getAll().then((res) => {
+      await itemSurvices.getAll().then((res) => {
         if (Object.keys(res).length != 0) {
           res.map((e) => {
             e.content = e.content.substring(0, 100);
             e.content += "...";
           });
-          templateData.posts = res;
+          templateData.posts = res.reverse();
         }
+      });
+      break;
+    case "contact":
+      await commentServices.getAll().then((res) => {
+        if (Object.keys(res).length != 0) templateData.comments = res;
       });
       break;
     case "details":

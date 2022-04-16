@@ -7,6 +7,7 @@ function addEventListeners() {
   partialTemplate("gallery-template");
   partialTemplate("catalog-template");
   partialTemplate("info-template");
+  partialTemplate("comment-card-template");
 
   navigate("home");
 }
@@ -19,7 +20,7 @@ function navigateHandler(event) {
   event.preventDefault();
   let url = new URL(event.target.href);
   navigate(url.pathname.slice(1));
-  //That returns us only the patch word
+  //That returns us only the path word
 }
 
 function onLoginSubmit(event) {
@@ -81,11 +82,11 @@ function onCommentSubmit(event) {
   let email = formData.get("email");
   let content = formData.get("message");
 
-  let isValid = title != "" && category != "" && content != "";
+  let isValid = name != "" && email != "" && content != "";
 
   if (isValid) {
     commentServices.add({ name, email, content }).then((res) => {
-      navigate("post");
+      navigate("contact");
     });
   } else {
     navigate("home");

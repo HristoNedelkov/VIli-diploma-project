@@ -99,9 +99,17 @@ const commentServices = {
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(postData),
+      body: JSON.stringify(commentData),
     });
     let data = await res.json();
     return data;
   },
+  async getAll() {
+    let res = await fetch(`${dataBaseUrl}/comments.json`);
+    let data = await res.json();
+    if (!data) {
+      return {};
+    }
+    return Object.keys(data).map((key) => ({ key, ...data[key] }));
+  }
 };

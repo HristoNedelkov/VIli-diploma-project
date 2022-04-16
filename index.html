@@ -90,8 +90,7 @@
                   href="/gallery"
                   onclick="navigateHandler(event)"
                 >Gallery</a></li>
-              <li><a href="/contact" onclick="navigateHandler(event)">Post
-                  article</a></li>
+              <li><a href="/contact" onclick="navigateHandler(event)">Contact us</a></li>
               <li><a href="/about-us" onclick="navigateHandler(event)">About us</a></li>
               <li><a
                   href="/logout"
@@ -112,64 +111,41 @@
         </nav>
       </header>
     </script>
+
     <!-- post COMMENT template -->
     <script type="text/x-handlebars-template" id="contact-template">
-                       <!-- POST NEW ARTICLE PAGE -->
-       {{> header-template}}
-       <section class="first-section">
+                      <!-- POST NEW ARTICLE PAGE -->
+      {{> header-template}}
+      <section class="first-section">
 
-          <form action="/create-comment" method="POST" id="comment-form">
-                <h1>Contact Us</h1>
-                <label for="name">Name</label>
-                <input type="text" name="name">
-                <label for="email">Email</label>
-                <input type="text" name="email">
-                <label for="message">Message</label>
-                <textarea name="message" cols="40" rows="10"></textarea>
-                <button onclick="onCommentSubmit(event)">Submit</button>
-              </form>
-              <div class="comments-box">
+         <form action="/create-comment" method="POST" id="comment-form">
+               <h1>Contact Us</h1>
+               <label for="name">Name</label>
+               <input type="text" name="name">
+               <label for="email">Email</label>
+               <input type="text" name="email">
+               <label for="message">Message</label>
+               <textarea name="message" cols="40" rows="10"></textarea>
+               <button onclick="onCommentSubmit(event)">Submit</button>
+             </form>
+             <div class="comments-box">
+            {{#each comments}}
+            {{> comment-card-template}}
+            {{/each}}
 
-                <div class="comment-card">
-                  <h1>Gosho </h1>
-                  <h3>gosho@abv.bg</h3>
-                  <p>Tova e suobhs fein :Lorem121
-                     Lorem, ipsum.l Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita animi odit magnam?</p>
-                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt nihil earum voluptatem, aliquid et exercitationem, id maxime amet libero odio fuga quidem dolor aut eius ipsa quas vitae tempora accusamus rem? Fugiat.
-                </div>
-                <div class="comment-card">
-                  <h1>Gosho </h1>
-                  <h3>gosho@abv.bg</h3>
-                  <p>Tova e suobhs fein Lorem, ipsum.l Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita animi odit magnam?</p>
-                </div>
-                <div class="comment-card">
-                  <h1>Gosho </h1>
-                  <h3>gosho@abv.bg</h3>
-                  <p>Tova e suobhs fein Lorem, ipsum.l Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita animi odit magnam?</p>
-                </div>
-                <div class="comment-card">
-                  <h1>Gosho </h1>
-                  <h3>gosho@abv.bg</h3>
-                  <p>Tova e suobhs fein Lorem, ipsum.l Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita animi odit magnam?</p>
-                </div>
-                <div class="comment-card">
-                  <h1>Gosho </h1>
-                  <h3>gosho@abv.bg</h3>
-                  <p>Tova e suobhs fein Lorem, ipsum.l Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita animi odit magnam?</p>
-                </div>
-                <div class="comment-card">
-                  <h1>Gosho </h1>
-                  <h3>gosho@abv.bg</h3>
-                  <p>Tova e suobhs fein Lorem, ipsum.l Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita animi odit magnam?</p>
-                </div>
-                  <div class="comment-card">
-                    <h1>Gosho </h1>
-                    <h3>gosho@abv.bg</h3>
-                    <p>Tova e suobhs fein Lorem, ipsum.l Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita animi odit magnam?</p>
-                  </div>
-              </div>
-           </section>
-         </section>
+
+             </div>
+          </section>
+        </section>
+    </script>
+
+    <!-- COMMENT CARD -->
+    <script type="text/x-handlebars-template" id="comment-card-template">
+      <div class="comment-card">
+        <h1>{{name}} </h1>
+        <h3>{{email}}</h3>
+        <p>{{content}}</p>
+      </div>
     </script>
     <!-- HOME LOGGED template -->
     <script type="text/x-handlebars-template" id="home-logged-template">
