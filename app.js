@@ -75,24 +75,7 @@ function onAddPostSubmit(event) {
     console.log("FIll all of the inputs");
   }
 }
-function onCommentSubmit(event) {
-  event.preventDefault();
-  let formData = new FormData(document.forms["comment-form"]);
-  let name = formData.get("name");
-  let email = formData.get("email");
-  let content = formData.get("message");
-
-  let isValid = name != "" && email != "" && content != "";
-
-  if (isValid) {
-    commentServices.add({ name, email, content }).then((res) => {
-      navigate("contact");
-    });
-  } else {
-    navigate("home");
-    console.log("FIll all of the inputs");
-  }
-}
+ 
 
 const navigate = (path) => {
   //Here we change the address and shhow the html with  ROUTER()

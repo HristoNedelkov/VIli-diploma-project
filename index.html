@@ -5,38 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/style.css" />
     <title>ExcelBlog</title>
-    <!-- Modules -->
-    <!-- <script src="./node_modules/jquery/dist/jquery.js"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
-    <!-- Scripts -->
+  
     <script src="survices.js"></script>
     <script src="router.js" defer></script>
     <script src="app.js" defer></script>
   </head>
 
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div  id="header-template">
+        <header id="header">
+          <img
+            src="/logo.png"
+            href="/"
+            onclick="navigateHandler(event)"
+            id="about-us-logo"
+            alt="My Happy SVG"
+            style="width: 119px; margin: 0;padding: 0%;"
+          />
+  
+           
+          <nav id="nav">
+            <ul>
+              
+                <li><a href="/home" onclick="navigateHandler(event)">Home</a></li>
+                <li><a
+                    href="/catalog"
+                    onclick="navigateHandler(event)"
+                  >Catalog</a></li>
+                <li><a href="/info" onclick="navigateHandler(event)">Info</a></li>
+                <li><a
+                    href="/gallery"
+                    onclick="navigateHandler(event)"
+                  >Gallery</a></li>
+                <li><a href="/contact" onclick="navigateHandler(event)">Contact us</a></li>
+                <li><a href="/about-us" onclick="navigateHandler(event)">About us</a></li>
+                
+               
+            </ul>
+          </nav>
+        </header>
+      </div>
+    </div>
 
-    <!-- HOME TEMPLATE -->
-    <script type="text/x-handlebars-template" id="home-template">
-      {{> header-template}}
-      <br><br><br>
-      {{#if isAuth}}
-      {{> home-logged-template}}
-      {{else}}
-      <section id="home">
-        <section class="background-container">
-          <h1>Welcome to Excel Blog!</h1>
-                <div class="auth-buttons">
-                  <a href="/login" onclick="navigateHandler(event)">Login</a>
-                  <a href="/register" onclick="navigateHandler(event)">Register</a>
-                </div>
-              </section>
-            </section>
-            {{/if}}
-    </script>
-    <script type="text/x-handlebars-template" id="info-template">
-             {{> header-template}}
+     
+    <!-- INFO TEMPLATE -->
+    <div  id="info-template" style="display: none;">
+             
        <br><br><br>
        <section class="first-section">
          <section class="background-container">
@@ -56,66 +71,29 @@
            <h3>Articles</h3>
            <hr>
             <div class="posts-row">
-              {{#each posts}}
-              {{> post-template}}
-              {{/each}}
+               
+              <article class="post">
+                <h1>EXCEL SUM</h1>
+                <h2><span>excel functions</span></h2>
+                <p>Тази функция се използва, за да сумира стойностите на множество клетки.</p>
+                <a
+                  href=" "
+                  onclick=" "
+                  id="delete-button"
+                >Delete</a>
+                <a
+                  href="/details/{{key}}"
+                  onclick=""
+                  id="details-button"
+                >Details</a>
+             
+              </article>
             </div>
           </section>
-    </script>
-    <!-- HEADER TEMPLATE -->
-    <script type="text/x-handlebars-template" id="header-template">
-      <header id="header">
-        <img
-          src="/logo.png"
-          href="/"
-          onclick="navigateHandler(event)"
-          id="about-us-logo"
-          alt="My Happy SVG"
-          style="width: 119px; margin: 0;padding: 0%;"
-        />
-
-        {{#if isAuth}}
-          <h2>Welcome <span>{{email}}</span></h2>
-        {{/if}}
-        <nav id="nav">
-          <ul>
-            {{#if isAuth}}
-              <li><a href="/home" onclick="navigateHandler(event)">Home</a></li>
-              <li><a
-                  href="/catalog"
-                  onclick="navigateHandler(event)"
-                >Catalog</a></li>
-              <li><a href="/info" onclick="navigateHandler(event)">Info</a></li>
-              <li><a
-                  href="/gallery"
-                  onclick="navigateHandler(event)"
-                >Gallery</a></li>
-              <li><a href="/contact" onclick="navigateHandler(event)">Contact us</a></li>
-              <li><a href="/about-us" onclick="navigateHandler(event)">About us</a></li>
-              <li><a
-                  href="/logout"
-                  onclick="navigateHandler(event)"
-                >Logout</a></li>
-            {{else}}
-              <li><a href="/home" onclick="navigateHandler">Home</a></li>
-              <li><a
-                  href="/login"
-                  onclick="navigateHandler(event)"
-                >Login</a></li>
-              <li><a
-                  href="/register"
-                  onclick="navigateHandler(event)"
-                >Register</a></li>
-            {{/if}}
-          </ul>
-        </nav>
-      </header>
-    </script>
-
-    <!-- post COMMENT template -->
-    <script type="text/x-handlebars-template" id="contact-template">
-                      <!-- POST NEW ARTICLE PAGE -->
-      {{> header-template}}
+    </div>
+    
+    <div  id="contact-template" style="display: none;">
+                    
       <section class="first-section">
 
          <form action="/create-comment" method="POST" id="comment-form">
@@ -129,28 +107,17 @@
                <button onclick="onCommentSubmit(event)">Submit</button>
              </form>
              <div class="comments-box">
-            {{#each comments}}
-            {{> comment-card-template}}
-            {{/each}} 
+              <h1 style="color: #fff;">НЯМА КОМЕНТАРИ, МОЛЯ ПРОВЕРЕТЕ ИНТЕРНЕТ ВРЪЗКАТА СИ! </h1>
+        
              </div>
           </section>
         </section>
-    </script>
-
+    </div>
     <!-- COMMENT CARD -->
-    <script type="text/x-handlebars-template" id="comment-card-template">
-      <div class="comment-card">
-        <h1>{{name}} </h1>
-        <h3>{{email}}</h3>
-        <p>{{content}}</p>
-      </div>
-    </script>
+     
     <!-- HOME LOGGED template -->
-    <script type="text/x-handlebars-template" id="home-logged-template">
-      {{#if isAuth}}
-      {{else}}
-      {{> header-template}}
-      {{/if}}
+    <div  id="home-logged-template">
+      
       <section id="home-logged">
          <div class="first-section">
           <!-- HERE YOU CAN ADD THE VIDEO AND LOGO OF ZPG -->
@@ -187,81 +154,12 @@
             </p>
 
         </div>
-    </script>
-    <!-- LOGIN TEMPLATE -->
-    <script type="text/x-handlebars-template" id="login-template">
-      {{> header-template}}
-      <section id="login">
-        <div class="color">
-          <div class="login-form">
-            <h1>Login</h1>
-            <form action="/login" method="POST" id="login-form">
-              <label for="email">Email</label>
-              <input type="text" name="email">
-              <label for="password">Password</label>
-              <input type="password" name="password">
-              <button onclick="onLoginSubmit(event)">Submit</button>
-              <a href="/register" onclick="navigateHandler(event)" class="option">Don't have an account?</a>
-            </form>
-          </div>
-        </div>
-      </section>
-    </script>
-    <!-- REGISTER TEMPLATE -->
-    <script type="text/x-handlebars-template" id="register-template">
-      {{> header-template}}
-      <section id="register">
-        <div class="color">
-          <div class="register-form">
-            <h1>Register</h1>
-            <form action="/register" method="POST" id="register-form">
-              <label for="email">Email</label>
-              <input type="text" name="email">
-              <label for="password">Password</label>
-              <input type="password" name="password">
-              <label for="repeat-password">Repeat Password</label>
-              <input type="password" name="repeatPassword">
-              <button  onclick="onRegSubmit(event)">Submit</button>
-              <a href="/login" onclick="navigateHandler(event)" class="option">Already have an account?</a>
-            </form>
-          </div>
-        </div>
-        </section>
-    </script>
-    <!-- POST TEMPLATE -->
-    <script type="text/x-handlebars-template" id="post-template">
-      <article class="post">
-        <h1>{{title}}</h1>
-        <h2><span>{{category}}</span></h2>
-        <p>{{content}}</p>
-        <a
-          href="/delete/{{key}}"
-          onclick="navigateHandler(event)"
-          id="delete-button"
-        >Delete</a>
-        <a
-          href="/details/{{key}}"
-          onclick="navigateHandler(event)"
-          id="details-button"
-        >Details</a>
-
-      </article>
-    </script>
-    <!-- Details Template -->
-    <script type="text/x-handlebars-template" id="details-template">
-      {{> header-template}}
-        <section class="details">
-          <div class="detail">
-            <h1>Title: {{title}}</h1>
-            <h2>Category: {{category}}</h2>
-            <h3>Content: {{content}}</h3>
-            <a href="/home" onclick="navigateHandler(event)" > Back to Home</a>
-          </div>
-        </section>
-    </script>
+    </div>
+     
+    
     <!-- GALLERY TEMPLATE -->
-    <script type="text/x-handlebars-template" id="gallery-template">
-      {{>header-template}}
+    <div  id="gallery-template" style="display: none;">
+      
       <br><br><br><br>
       <iframe width="560" height="315" src="https://www.youtube.com/embed/gP4603Gsc7g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></iframe>
       <div class="gallery-firm">
@@ -285,10 +183,10 @@
           <img src="./images/graphs/gallery/2_firm/3.png" alt="">
           <img src="./images/graphs/gallery/2_firm/4.png" alt="">
           </div>
-    </script>
+    </div>
     <!-- Catalog template -->
-    <script type="text/x-handlebars-template" id="catalog-template">
-         {{>header-template}}
+    <div  id="catalog-template" style="display: none;">
+         
          <br><br>
          <div class="gallery-firm">
            <h1>ТРАНСПОРТНА ФИРМА</h1>
@@ -351,27 +249,10 @@
 
 
           </div>
-    </script>
+    </div>
     <!-- ABOUT-US -->
-    <script type="text/x-handlebars-template" id="aboutUs-template">
-      {{> header-template}}
-        <section class="details">
-          <div class="detail">
-            <h1>Author of the site: Violeta Andonova</h1>
-            <h3>email: vili.andonova@gmail.com</h3>
-            <h2>contact: +00123 234 345</h2>
-            <a href="/home" onclick="navigateHandler(event)" > Back to Home</a>
-            <br><br>
-            <p>https://aula.bg/blog/excel-kak-se-izpolzva/</p>
-            <p>
-              https://support.microsoft.com/bg-bg/office/use-excel-built-in-functions-to-find-data-in-a-table-or-a-range-of-cells-6777ec9b-6191-426a-8d45-196ecbf2a186
-            </p>
-            <p>
-              https://www.bg-ikonomika.com/2014/05/1_3.html
-            </p>
-          </div>
-
-        </section>
-    </script>
+    <div  id="aboutUs-template" style="display: none;">
+       !! ПОПЪЛНИ КОДА ТУК!! 
+    </div>
   </body>
 </html>

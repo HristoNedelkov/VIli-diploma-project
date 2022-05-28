@@ -12,10 +12,7 @@ const routes = {
 
 const router = async (fullPath) => {
   let [path, id] = fullPath.split("/");
-
-  let app = document.getElementById("root");
-  let templateData = authServices.getData();
-
+ 
   switch (path) {
     case "info":
       await itemSurvices.getAll().then((res) => {
